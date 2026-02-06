@@ -7,22 +7,27 @@ import AddNewProject from "./components/AddNewProject";
 import Section from "./components/Section";
 
 function App() {
-  const [isNewProject, setIsNewProject] = useState(false);
+  const [activeSection, setActiveSection] = useState("NoProject");
 
-  function handleNewProject() {
-    setIsNewProject(() => true);
+  function enteredNewProject() {
+    setActiveSection(() => "NewProject");
+  }
+
+  function exitNewProject() {
+    setActiveSection(() => "NoProject");
   }
 
   return (
     <main className="flex h-svh">
-      <Projects onNewProject={handleNewProject} />
-      {isNewProject ? (
+      <Projects onNewProject={enteredNewProject} />
+      {activeSection === "NewProject" && (
         <Section>
-          <AddNewProject />
+          <AddNewProject onExitNewProject={exitNewProject} />
         </Section>
-      ) : (
+      )}
+      {activeSection === "NoProject" && (
         <Section>
-          <NoProject onNewProject={handleNewProject} />
+          <NoProject onNewProject={enteredNewProject} />
         </Section>
       )}
     </main>
