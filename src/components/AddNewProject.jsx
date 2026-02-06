@@ -1,3 +1,5 @@
+import NewProjectInput from "./NewProjectInput";
+
 export default function AddNewProject({ onExitNewProject }) {
   return (
     <>
@@ -10,6 +12,13 @@ export default function AddNewProject({ onExitNewProject }) {
           Save
         </button>
       </div>
+      <NewProjectInput inputType="text" labelText="title" />
+      <NewProjectInput
+        inputType="text"
+        labelText="description"
+        isTextArea={true}
+      />
+      <NewProjectInput inputType="date" labelText="due date" />
     </>
   );
 }
