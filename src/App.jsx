@@ -17,12 +17,23 @@ function App() {
     setActiveSection(() => "NoProject");
   }
 
+  function handleRefs(title, description, date) {
+    console.log(title.current.value);
+    console.log(description.current.value);
+    console.log(date.current.value);
+
+    exitNewProject();
+  }
+
   return (
     <main className="flex h-svh">
       <Projects onNewProject={enteredNewProject} />
       {activeSection === "NewProject" && (
         <Section>
-          <AddNewProject onExitNewProject={exitNewProject} />
+          <AddNewProject
+            onExitNewProject={exitNewProject}
+            onHandleRefs={handleRefs}
+          />
         </Section>
       )}
       {activeSection === "NoProject" && (
