@@ -19,16 +19,22 @@ function App() {
   }
 
   function handleRefs(title, description, date) {
-    setProjects((prevArray) => [
-      ...prevArray,
-      {
-        title: title.current.value,
-        description: description.current.value,
-        date: date.current.value,
-      },
-    ]);
+    if (
+      title.current.value &&
+      description.current.value &&
+      date.current.value
+    ) {
+      setProjects((prevArray) => [
+        ...prevArray,
+        {
+          title: title.current.value,
+          description: description.current.value,
+          date: date.current.value,
+        },
+      ]);
 
-    exitNewProject();
+      exitNewProject();
+    }
   }
 
   return (
