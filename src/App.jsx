@@ -8,6 +8,7 @@ import Section from "./components/Section";
 
 function App() {
   const [activeSection, setActiveSection] = useState("NoProject");
+  const [projects, setProjects] = useState([]);
 
   function enteredNewProject() {
     setActiveSection(() => "NewProject");
@@ -18,9 +19,14 @@ function App() {
   }
 
   function handleRefs(title, description, date) {
-    console.log(title.current.value);
-    console.log(description.current.value);
-    console.log(date.current.value);
+    setProjects((prevArray) => [
+      {
+        title: title.current.value,
+        description: description.current.value,
+        date: date.current.value,
+      },
+      ...prevArray,
+    ]);
 
     exitNewProject();
   }
