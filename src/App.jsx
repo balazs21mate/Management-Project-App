@@ -20,12 +20,12 @@ function App() {
 
   function handleRefs(title, description, date) {
     setProjects((prevArray) => [
+      ...prevArray,
       {
         title: title.current.value,
         description: description.current.value,
         date: date.current.value,
       },
-      ...prevArray,
     ]);
 
     exitNewProject();

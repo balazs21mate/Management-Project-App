@@ -7,8 +7,10 @@ export default function Projects({ onNewProject, projects }) {
       <NewProjectButton onClick={onNewProject}>+ Add Project</NewProjectButton>
       <ul>
         {projects.map((project) => (
-          <li key={project.title} className="text-white">
-            {project.title}
+          <li className="w-4/5" key={project.title}>
+            <button className="text-white w-full text-start p-3 mb-1 text-2xl hover:bg-neutral-800 focus:bg-neutral-800">
+              {project.title}
+            </button>
           </li>
         ))}
       </ul>
