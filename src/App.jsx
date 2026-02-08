@@ -33,7 +33,7 @@ function App() {
 
   return (
     <main className="flex h-svh">
-      <Projects onNewProject={enteredNewProject} />
+      <Projects onNewProject={enteredNewProject} projects={projects} />
       {activeSection === "NewProject" && (
         <Section>
           <AddNewProject
