@@ -1,7 +1,11 @@
 import NewProjectInput from "./NewProjectInput";
 import { useRef } from "react";
 
-export default function AddNewProject({ onExitNewProject, onHandleRefs }) {
+export default function AddNewProject({
+  onExitNewProject,
+  onHandleRefs,
+  isWarning,
+}) {
   const title = useRef();
   const description = useRef();
   const date = useRef();
@@ -17,14 +21,25 @@ export default function AddNewProject({ onExitNewProject, onHandleRefs }) {
           Save
         </button>
       </div>
-      <NewProjectInput ref={title} inputType="text" labelText="title" />
       <NewProjectInput
+        ref={title}
+        isEmpty={isWarning.title}
+        inputType="text"
+        labelText="title"
+      />
+      <NewProjectInput
+        isEmpty={isWarning.description}
         ref={description}
         inputType="text"
         labelText="description"
         isTextArea={true}
       />
-      <NewProjectInput ref={date} inputType="date" labelText="due date" />
+      <NewProjectInput
+        ref={date}
+        inputType="date"
+        labelText="due date"
+        isEmpty={isWarning.date}
+      />
     </>
   );
 }

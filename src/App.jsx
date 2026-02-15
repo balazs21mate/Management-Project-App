@@ -9,6 +9,11 @@ import Section from "./components/Section";
 function App() {
   const [activeSection, setActiveSection] = useState("NoProject");
   const [projects, setProjects] = useState([]);
+  const [inputWarning, setInputWarning] = useState({
+    title: false,
+    description: false,
+    date: false,
+  });
 
   function enteredNewProject() {
     setActiveSection(() => "NewProject");
@@ -16,6 +21,7 @@ function App() {
 
   function exitNewProject() {
     setActiveSection(() => "NoProject");
+    setInputWarning({ title: false, description: false, date: false });
   }
 
   function handleRefs(title, description, date) {
@@ -34,6 +40,36 @@ function App() {
       ]);
 
       exitNewProject();
+    } else {
+      if (!title.current.value) {
+        setInputWarning((prevWarning) => {
+          return { ...prevWarning, title: true };
+        });
+      } else {
+        setInputWarning((prevWarning) => {
+          return { ...prevWarning, title: false };
+        });
+      }
+
+      if (!description.current.value) {
+        setInputWarning((prevWarning) => {
+          return { ...prevWarning, description: true };
+        });
+      } else {
+        setInputWarning((prevWarning) => {
+          return { ...prevWarning, description: false };
+        });
+      }
+
+      if (!date.current.value) {
+        setInputWarning((prevWarning) => {
+          return { ...prevWarning, date: true };
+        });
+      } else {
+        setInputWarning((prevWarning) => {
+          return { ...prevWarning, date: false };
+        });
+      }
     }
   }
 
@@ -45,6 +81,7 @@ function App() {
           <AddNewProject
             onExitNewProject={exitNewProject}
             onHandleRefs={handleRefs}
+            isWarning={inputWarning}
           />
         </Section>
       )}
