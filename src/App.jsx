@@ -11,12 +11,8 @@ function App() {
   const [projects, setProjects] = useState([]);
   const [inputWarning, setInputWarning] = useState(false);
 
-  function enteredNewProject() {
-    setActiveSection(() => "NewProject");
-  }
-
-  function exitNewProject() {
-    setActiveSection(() => "NoProject");
+  function handleActiveSection(sectionName) {
+    setActiveSection(() => sectionName);
     setInputWarning(false);
   }
 
@@ -35,7 +31,7 @@ function App() {
         },
       ]);
 
-      exitNewProject();
+      handleActiveSection("NoProject");
     } else {
       setInputWarning(true);
     }
@@ -43,11 +39,14 @@ function App() {
 
   return (
     <main className="flex h-svh">
-      <Projects onNewProject={enteredNewProject} projects={projects} />
+      <Projects
+        onNewProject={() => handleActiveSection("NewProject")}
+        projects={projects}
+      />
       {activeSection === "NewProject" && (
         <Section>
           <AddNewProject
-            onExitNewProject={exitNewProject}
+            onExitNewProject={() => handleActiveSection("NoProject")}
             onHandleRefs={handleRefs}
             isWarning={inputWarning}
           />
@@ -55,7 +54,7 @@ function App() {
       )}
       {activeSection === "NoProject" && (
         <Section>
-          <NoProject onNewProject={enteredNewProject} />
+          <NoProject onNewProject={() => handleActiveSection("NewProject")} />
         </Section>
       )}
     </main>
