@@ -21,25 +21,19 @@ export default function AddNewProject({
           Save
         </button>
       </div>
+      <NewProjectInput ref={title} inputType="text" labelText="title" />
       <NewProjectInput
-        ref={title}
-        isEmpty={isWarning.title}
-        inputType="text"
-        labelText="title"
-      />
-      <NewProjectInput
-        isEmpty={isWarning.description}
         ref={description}
         inputType="text"
         labelText="description"
         isTextArea={true}
       />
-      <NewProjectInput
-        ref={date}
-        inputType="date"
-        labelText="due date"
-        isEmpty={isWarning.date}
-      />
+      <NewProjectInput ref={date} inputType="date" labelText="due date" />
+      {isWarning && (
+        <p className="text-red-500 text-xl ml-20 self-start">
+          A mezők kitöltése kötelező!
+        </p>
+      )}
     </>
   );
 }
