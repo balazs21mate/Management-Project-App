@@ -18,8 +18,8 @@ function App() {
 
   function handleRefs(title, description, date) {
     if (
-      title.current.value &&
-      description.current.value &&
+      title.current.value.trim() != "" &&
+      description.current.value.trim() != "" &&
       date.current.value
     ) {
       setProjects((prevArray) => [

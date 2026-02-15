@@ -2,20 +2,21 @@ import { forwardRef, useState } from "react";
 
 const NewProjectInput = forwardRef(
   ({ inputType, labelText, isTextArea }, ref) => {
-    const [inputValue, setInputValue] = useState();
+    const [inputValue, setInputValue] = useState("");
+    const [isTouched, setIsTouched] = useState(false);
 
     function handleInputValue(event) {
       setInputValue(event.target.value);
+      if (!isTouched) setIsTouched(true);
     }
 
-    let inputClass;
+    let inputClass = "bg-stone-300 mr-60 ml-20 px-2 py-3 focus:outline-none";
 
-    if (inputValue != undefined && !inputValue) {
-      inputClass =
-        "bg-stone-300 border-4 border-red-400 mr-60 focus:outline-none ml-20 px-2 py-3";
+    if (inputValue.trim() === "" && isTouched) {
+      inputClass += " border-2 border-red-400";
     } else {
-      inputClass =
-        "bg-stone-300 border-b-2 border-stone-400 hover:border-stone-600 mr-60 focus:border-stone-600 focus:outline-none ml-20 px-2 py-3";
+      inputClass +=
+        " border-b-2 border-stone-400 hover:border-stone-600 focus:border-stone-600";
     }
 
     return (
