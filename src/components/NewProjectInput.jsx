@@ -10,7 +10,7 @@ const NewProjectInput = forwardRef(
       if (!isTouched) setIsTouched(true);
     }
 
-    let inputClass = "bg-stone-300 mr-60 ml-20 px-2 py-3 focus:outline-none";
+    let inputClass = "bg-stone-300  px-2 py-3 focus:outline-none";
 
     if (inputValue.trim() === "" && isTouched) {
       inputClass += " border-2 border-red-400";
@@ -21,7 +21,7 @@ const NewProjectInput = forwardRef(
 
     return (
       <div className="flex flex-col w-full text-stone-600 my-3">
-        <label className="uppercase ml-20 mb-1 font-bold">{labelText}</label>
+        <label className="uppercase mb-1 font-bold">{labelText}</label>
         {isTextArea ? (
           <textarea
             ref={ref}

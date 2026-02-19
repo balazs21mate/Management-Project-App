@@ -62,6 +62,7 @@ function App() {
               <Project
                 title={project.title}
                 description={project.description}
+                date={project.date}
               ></Project>
             </Section>
           ),

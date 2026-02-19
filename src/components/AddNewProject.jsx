@@ -12,7 +12,7 @@ export default function AddNewProject({
 
   return (
     <>
-      <div className="self-end mr-60">
+      <div className="self-end">
         <button onClick={onExitNewProject}>Cancel</button>
         <button
           onClick={() => onHandleRefs(title, description, date)}
@@ -30,7 +30,7 @@ export default function AddNewProject({
       />
       <NewProjectInput ref={date} inputType="date" labelText="due date" />
       {isWarning && (
-        <p className="text-red-500 text-xl ml-20 self-start">
+        <p className="text-red-500 text-xl self-start">
           A mezők kitöltése kötelező!
         </p>
       )}
