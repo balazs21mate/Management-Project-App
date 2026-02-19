@@ -38,6 +38,14 @@ function App() {
     }
   }
 
+  function handleProjectRemove(title) {
+    setProjects((prevProjects) => {
+      return prevProjects.filter((project) => project.title != title);
+    });
+
+    handleActiveSection("NoProject");
+  }
+
   return (
     <main className="flex h-svh">
       <Projects onNewProject={handleActiveSection} projects={projects} />
@@ -63,6 +71,7 @@ function App() {
                 title={project.title}
                 description={project.description}
                 date={project.date}
+                onClick={() => handleProjectRemove(project.title)}
               ></Project>
             </Section>
           ),

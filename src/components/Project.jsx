@@ -1,4 +1,4 @@
-export default function Project({ title, description, date }) {
+export default function Project({ title, description, date, ...props }) {
   function formatDate(date) {
     return new Date(date).toLocaleDateString("en-Us", {
       month: "short",
@@ -10,7 +10,7 @@ export default function Project({ title, description, date }) {
     <>
       <div className="w-full flex justify-between">
         <h1 className="text-4xl font-bold">{title}</h1>
-        <button>Delete</button>
+        <button {...props}>Delete</button>
       </div>
       <time className="self-start text-stone-400 mt-3 mb-4">
         {formatDate(date)}
