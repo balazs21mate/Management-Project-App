@@ -39,10 +39,7 @@ function App() {
 
   return (
     <main className="flex h-svh">
-      <Projects
-        onNewProject={() => handleActiveSection("NewProject")}
-        projects={projects}
-      />
+      <Projects onNewProject={handleActiveSection} projects={projects} />
       {activeSection === "NewProject" && (
         <Section>
           <AddNewProject
