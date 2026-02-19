@@ -3,6 +3,7 @@ import { useState } from "react";
 import NoProject from "./components/NoProject";
 import Projects from "./components/Projects";
 import AddNewProject from "./components/AddNewProject";
+import Project from "./components/Project";
 
 import Section from "./components/Section";
 
@@ -53,6 +54,17 @@ function App() {
         <Section>
           <NoProject onNewProject={() => handleActiveSection("NewProject")} />
         </Section>
+      )}
+      {projects.map(
+        (project) =>
+          activeSection === project.title && (
+            <Section key={project.title}>
+              <Project
+                title={project.title}
+                description={project.description}
+              ></Project>
+            </Section>
+          ),
       )}
     </main>
   );

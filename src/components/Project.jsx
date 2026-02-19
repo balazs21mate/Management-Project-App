@@ -1,7 +1,7 @@
-export default function Project({ name, description }) {
+export default function Project({ title, description }) {
   return (
     <>
-      <h1>{name}</h1>
+      <h1>{title}</h1>
       <p>{description}</p>
     </>
   );
