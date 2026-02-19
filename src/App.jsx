@@ -25,6 +25,7 @@ function App() {
     ) {
       for (const project of projects) {
         if (project.title === title.current.value.trim()) {
+          setInputWarning("Ezzel a címmel már lett projekt létrehozva!");
           return;
         }
       }
