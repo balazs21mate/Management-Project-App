@@ -18,6 +18,7 @@ export default function Project({ title, description, date }) {
       <p className="self-start border-b-4 border-stone-200 pb-4 w-full">
         {description}
       </p>
+      <div>Tasks...</div>
     </>
   );
 }
