@@ -10,11 +10,11 @@ import Section from "./components/Section";
 function App() {
   const [activeSection, setActiveSection] = useState("NoProject");
   const [projects, setProjects] = useState([]);
-  const [inputWarning, setInputWarning] = useState(false);
+  const [inputWarning, setInputWarning] = useState("");
 
   function handleActiveSection(sectionName) {
     setActiveSection(() => sectionName);
-    setInputWarning(false);
+    setInputWarning("");
   }
 
   function handleRefs(title, description, date) {
@@ -40,7 +40,7 @@ function App() {
 
       handleActiveSection("NoProject");
     } else {
-      setInputWarning(true);
+      setInputWarning("A mezők kitöltése kötelező!");
     }
   }
 
@@ -60,7 +60,7 @@ function App() {
           <AddNewProject
             onExitNewProject={() => handleActiveSection("NoProject")}
             onHandleRefs={handleRefs}
-            isWarning={inputWarning}
+            warningText={inputWarning}
           />
         </Section>
       )}

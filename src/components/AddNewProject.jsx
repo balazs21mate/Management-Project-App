@@ -4,7 +4,7 @@ import { useRef } from "react";
 export default function AddNewProject({
   onExitNewProject,
   onHandleRefs,
-  isWarning,
+  warningText,
 }) {
   const title = useRef();
   const description = useRef();
@@ -29,10 +29,8 @@ export default function AddNewProject({
         isTextArea={true}
       />
       <NewProjectInput ref={date} inputType="date" labelText="due date" />
-      {isWarning && (
-        <p className="text-red-500 text-xl self-start">
-          A mezők kitöltése kötelező!
-        </p>
+      {warningText != "" && (
+        <p className="text-red-500 text-xl self-start">{warningText}</p>
       )}
     </>
   );
