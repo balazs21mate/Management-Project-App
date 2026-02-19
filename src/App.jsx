@@ -23,6 +23,12 @@ function App() {
       description.current.value.trim() != "" &&
       date.current.value
     ) {
+      for (const project of projects) {
+        if (project.title === title.current.value.trim()) {
+          return;
+        }
+      }
+
       setProjects((prevArray) => [
         ...prevArray,
         {
