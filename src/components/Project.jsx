@@ -1,11 +1,15 @@
+import TaskInput from "./TaskInput";
+import TaskLog from "./TaskLog";
+
+function formatDate(date) {
+  return new Date(date).toLocaleDateString("en-Us", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
 export default function Project({ title, description, date, ...props }) {
-  function formatDate(date) {
-    return new Date(date).toLocaleDateString("en-Us", {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-    });
-  }
   return (
     <>
       <div className="w-full flex justify-between">
@@ -18,7 +22,8 @@ export default function Project({ title, description, date, ...props }) {
       <p className="self-start border-b-4 border-stone-200 pb-4 w-full">
         {description}
       </p>
-      <div>Tasks...</div>
+      <TaskInput />
+      <TaskLog />
     </>
   );
 }
