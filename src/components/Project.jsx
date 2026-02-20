@@ -30,6 +30,10 @@ export default function Project({ title, description, date, ...props }) {
     }
   }
 
+  function handleTaskRemove(id) {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id != id));
+  }
+
   return (
     <>
       <div className="w-full flex justify-between">
@@ -43,7 +47,7 @@ export default function Project({ title, description, date, ...props }) {
         {description}
       </p>
       <TaskInput onText={handleTasks} warning={isWarning} />
-      <TaskLog tasks={tasks} />
+      <TaskLog tasks={tasks} onRemoveTask={handleTaskRemove} />
     </>
   );
 }
