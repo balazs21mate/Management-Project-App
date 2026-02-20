@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function TaskInput(params) {
+export default function TaskInput({ onText }) {
   const [text, setText] = useState("");
 
   function handleText(event) {
@@ -21,7 +21,10 @@ export default function TaskInput(params) {
           value={text}
         />
       </div>
-      <button className="w-24 h-12 self-end text-sm font-semibold">
+      <button
+        onClick={() => onText(text, setText)}
+        className="w-24 h-12 self-end text-sm font-semibold"
+      >
         Add Task
       </button>
     </div>

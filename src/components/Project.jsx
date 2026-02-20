@@ -14,6 +14,16 @@ function formatDate(date) {
 export default function Project({ title, description, date, ...props }) {
   const [tasks, setTasks] = useState([]);
 
+  function handleTasks(text, setText) {
+    setTasks((prevTasks) => {
+      return [
+        ...prevTasks,
+        { task: text, id: Math.random().toString(36).substring(2, 9) },
+      ];
+    });
+    setText("");
+  }
+
   return (
     <>
       <div className="w-full flex justify-between">
@@ -26,7 +36,7 @@ export default function Project({ title, description, date, ...props }) {
       <p className="self-start border-b-4 border-stone-200 pb-4 w-full">
         {description}
       </p>
-      <TaskInput />
+      <TaskInput onText={handleTasks} />
       <TaskLog />
     </>
   );
