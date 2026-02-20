@@ -43,7 +43,7 @@ export default function Project({ title, description, date, ...props }) {
         {description}
       </p>
       <TaskInput onText={handleTasks} warning={isWarning} />
-      <TaskLog />
+      <TaskLog tasks={tasks} />
     </>
   );
 }
