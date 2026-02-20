@@ -1,7 +1,13 @@
 import { useState } from "react";
 
-export default function TaskInput({ onText }) {
+export default function TaskInput({ onText, warning }) {
   const [text, setText] = useState("");
+
+  let inputClass = "bg-stone-300  px-2 py-3 ";
+
+  if (warning) {
+    inputClass += "border-2 border-red-400";
+  }
 
   function handleText(event) {
     setText(() => event.target.value);
@@ -14,7 +20,7 @@ export default function TaskInput({ onText }) {
           Tasks
         </label>
         <input
-          className="bg-stone-300  px-2 py-3 "
+          className={inputClass}
           type="text"
           id="task"
           onChange={handleText}
