@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import TaskInput from "./TaskInput";
 import TaskLog from "./TaskLog";
 
@@ -10,6 +12,8 @@ function formatDate(date) {
 }
 
 export default function Project({ title, description, date, ...props }) {
+  const [tasks, setTasks] = useState([]);
+
   return (
     <>
       <div className="w-full flex justify-between">
